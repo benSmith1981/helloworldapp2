@@ -7,18 +7,43 @@
 //
 
 import UIKit
+//    enum lightbulbEnum{
+//        case on
+//        case off
+//        func switchLightBulbState() {
+//            switch self {
+//            case .on:
+//                lightBulbImage.image = #imageLiteral(resourceName: "LightBulbOff")
+//
+//            case .off:
+//                lightBulbImage.image = #imageLiteral(resourceName: "lightonblack")
+//
+//            }
+//        }
+//    }
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var donaldImage: UIImageView!
-    
-    @IBAction func button(_ sender: Any) {
-        print("hello")
-        donaldImage.image = nil
+    @IBOutlet weak var lightBulbImag: UIImageView!
+    var isLightOn: Bool = false
+//    var lightBulbState: lightbulbEnum
+
+    @IBAction func ToggleLight(_ sender: Any) {
+        if isLightOn {
+            isLightOn = false
+            lightBulbImag.image = #imageLiteral(resourceName: "LightBulbOff")
+            
+        } else {
+            isLightOn = true
+            lightBulbImag.image = #imageLiteral(resourceName: "lightonblack")
+        }
+        // UIImage.init(named: "lightonblack")
+//        lightBulbState.switchLightBulbState()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        lightBulbState = lightbulbEnum.off
         print("view did load")
         
     }
