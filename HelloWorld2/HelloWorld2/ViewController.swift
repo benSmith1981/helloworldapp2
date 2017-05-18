@@ -10,6 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var donaldImage: UIImageView!
+    
+    @IBAction func button(_ sender: Any) {
+        print("hello")
+        donaldImage.image = nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("view did load")
