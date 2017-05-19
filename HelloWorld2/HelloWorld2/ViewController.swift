@@ -7,43 +7,45 @@
 //
 
 import UIKit
-//    enum lightbulbEnum{
-//        case on
-//        case off
-//        func switchLightBulbState() {
-//            switch self {
-//            case .on:
-//                lightBulbImage.image = #imageLiteral(resourceName: "LightBulbOff")
-//
-//            case .off:
-//                lightBulbImage.image = #imageLiteral(resourceName: "lightonblack")
-//
-//            }
-//        }
-//    }
+
+enum lightbulbEnum{
+    case on
+    case off
+    
+    mutating func switchLightBulbState() -> UIImage {
+        switch self {
+        case .on:
+            self = .off
+            return #imageLiteral(resourceName: "LightBulbOff")
+            
+        case .off:
+            self = .on
+            return #imageLiteral(resourceName: "lightonblack")
+            
+        }
+    }
+}
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var lightBulbImag: UIImageView!
-    var isLightOn: Bool = false
-//    var lightBulbState: lightbulbEnum
-
+    var lightBulb: lightbulbEnum?
+//    var lightOnOfBool: Bool = false
+    
     @IBAction func ToggleLight(_ sender: Any) {
-        if isLightOn {
-            isLightOn = false
-            lightBulbImag.image = #imageLiteral(resourceName: "LightBulbOff")
-            
-        } else {
-            isLightOn = true
-            lightBulbImag.image = #imageLiteral(resourceName: "lightonblack")
-        }
-        // UIImage.init(named: "lightonblack")
-//        lightBulbState.switchLightBulbState()
+//        if lightOnOfBool {
+//            lightBulbImag.image = #imageLiteral(resourceName: "lightonblack")
+//            lightOnOfBool = true
+//        } else {
+//            lightBulbImag.image = #imageLiteral(resourceName: "LightBulbOff")
+//            lightOnOfBool = false
+//        }
+        lightBulbImag.image = lightBulb?.switchLightBulbState()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        lightBulbState = lightbulbEnum.off
+        lightBulb = lightbulbEnum.off
         print("view did load")
         
     }
